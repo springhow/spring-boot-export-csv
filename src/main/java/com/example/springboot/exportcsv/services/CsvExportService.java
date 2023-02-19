@@ -28,6 +28,7 @@ public class CsvExportService {
 
         List<Employee> employees = employeeRepository.findAll();
         try (CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+            csvPrinter.printRecord("ID", "First Name", "Last Name","Email","Department");
             for (Employee employee : employees) {
                 csvPrinter.printRecord(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getEmail(), employee.getDepartment());
             }
